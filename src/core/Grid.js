@@ -68,10 +68,11 @@ Grid.prototype._buildNodes = function(width, height, matrix) {
 
     for (i = 0; i < height; ++i) {
         for (j = 0; j < width; ++j) {
-            if (matrix[i][j]) {
-                // 0, false, null will be walkable
-                // while others will be un-walkable
+            if (matrix[i][j] === 0) {
                 nodes[i][j].walkable = false;
+            }
+            else if (matrix[i][j]) {
+                nodes[i][j].cost = matrix[i][j];
             }
         }
     }
@@ -122,6 +123,17 @@ Grid.prototype.setWalkableAt = function(x, y, walkable) {
     this.nodes[y][x].walkable = walkable;
 };
 
+/**
+ * Set the terrain cost of the node on the given position.
+ * NOTE: throws exception if the coordinate is not inside the grid.
+ * @param {number} x - The x coordinate of the node.
+ * @param {number} y - The y coordinate of the node.
+ * @param {number} cost - The terrain cost of the node.
+ */
+Grid.prototype.setCostAt = function(x, y, cost) {
+    this.nodes[y][x].cost = cost;
+    this.nodes[y][x].walkable = (cost === 0? false: true);
+};
 
 /**
  * Get the neighbors of the given node.
@@ -234,6 +246,7 @@ Grid.prototype.clone = function() {
         newNodes[i] = new Array(width);
         for (j = 0; j < width; ++j) {
             newNodes[i][j] = new Node(j, i, thisNodes[i][j].walkable);
+            newNodes[i][j].cost = thisNodes[i][j].cost;
         }
     }
 

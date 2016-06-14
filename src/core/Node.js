@@ -19,6 +19,11 @@ function Node(x, y, walkable) {
      */
     this.y = y;
     /**
+     * The cost of traversing the node.
+     * @type number
+     */
+    this.cost = 1;
+    /**
      * Whether this node can be walked through.
      * @type boolean
      */

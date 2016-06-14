@@ -48,11 +48,11 @@ describe('Grid', function() {
 
         beforeEach(function() {
             matrix = [
-                [1, 0, 0, 1],
-                [0, 1, 0, 0],
-                [0, 1, 0, 0],
-                [0, 0, 0, 0],
-                [1, 0, 0, 1],
+                [0, 1, 1, 0],
+                [1, 0, 1, 1],
+                [1, 0, 1, 1],
+                [1, 1, 1, 1],
+                [0, 1, 1, 0],
             ];
             height = matrix.length;
             width = matrix[0].length;
@@ -71,7 +71,7 @@ describe('Grid', function() {
 
         it('should initiate all nodes\' walkable attribute', function() {
             enumPos(function(x, y, g) {
-                if (matrix[y][x]) {
+                if (matrix[y][x] === 0) {
                     g.isWalkableAt(x, y).should.be.false;
                 } else {
                     g.isWalkableAt(x, y).should.be.true;
@@ -129,11 +129,11 @@ describe('Grid', function() {
 
         beforeEach(function() {
             matrix = [
-                [1, 0, 0, 1],
-                [0, 1, 0, 0],
-                [0, 1, 0, 0],
-                [0, 0, 0, 0],
-                [1, 0, 0, 1],
+                [0, 1, 1, 0],
+                [1, 0, 1, 1],
+                [1, 0, 1, 1],
+                [1, 1, 1, 1],
+                [0, 1, 1, 0],
             ];
 
             grid = new Grid(matrix);
