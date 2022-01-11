@@ -97,7 +97,7 @@ AStarFinder.prototype.findPath = function(startX, startY, endX, endY, grid) {
             // get the distance between current node and the neighbor
             // and calculate the next g score
             var distance = ((x - node.x === 0 || y - node.y === 0) ? 1 : SQRT2);
-            ng = node.g + node.cost + distance;
+            ng = node.g + neighbor.cost + distance;
 
             // check if the neighbor has not been inspected yet, or
             // can be reached with smaller cost from the current node
