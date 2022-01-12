@@ -233,8 +233,10 @@ Grid.prototype.getNeighbors = function(node, diagonalMovement) {
 Grid.prototype.reset = function() {
     for (i = 0; i < this.height; ++i) {
         for (j = 0; j < this.width; ++j) {
-            this.nodes[i][j].opened = false;
-            this.nodes[i][j].closed = false;
+            this.nodes[i][j].opened = undefined;
+            this.nodes[i][j].closed = undefined;
+            this.nodes[i][j].g = undefined;
+            this.nodes[i][j].h = undefined;
         }
     }
 }
