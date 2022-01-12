@@ -227,6 +227,17 @@ Grid.prototype.getNeighbors = function(node, diagonalMovement) {
     return neighbors;
 };
 
+/**
+ * Resets the grid ready for more pathfinding
+ */
+Grid.prototype.reset = function() {
+    for (i = 0; i < this.height; ++i) {
+        for (j = 0; j < this.width; ++j) {
+            this.nodes[i][j].opened = false;
+            this.nodes[i][j].closed = false;
+        }
+    }
+}
 
 /**
  * Get a clone of this grid.
