@@ -230,13 +230,16 @@ Grid.prototype.getNeighbors = function(node, diagonalMovement) {
 /**
  * Resets the grid ready for more pathfinding
  */
-Grid.prototype.reset = function() {
+ Grid.prototype.reset = function() {
     for (i = 0; i < this.height; ++i) {
         for (j = 0; j < this.width; ++j) {
-            this.nodes[i][j].opened = undefined;
-            this.nodes[i][j].closed = undefined;
-            this.nodes[i][j].g = undefined;
-            this.nodes[i][j].h = undefined;
+            const node = this.nodes[i][j]
+            node.opened = undefined;
+            node.closed = undefined;
+            node.g = undefined;
+            node.h = undefined;
+            node.f = undefined;
+            node.parent = undefined;
         }
     }
 }
